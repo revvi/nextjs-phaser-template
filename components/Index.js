@@ -1,15 +1,15 @@
-import Main from '../components/Main';
-import { useEffect } from 'react';
 import Phaser from "phaser";
+import Main from "../components/Main";
+import { useEffect } from "react";
 
 export default function Index() {
   useEffect(() => {
     loadGame();
-    console.log('load game')
+    console.log("load game");
   }, []);
 
   const loadGame = async () => {
-    if (typeof window !== 'object') {
+    if (typeof window !== "object") {
       return;
     }
 
@@ -19,15 +19,19 @@ export default function Index() {
       height: window.innerHeight,
       // width: window.innerWidth * window.devicePixelRatio,
       // height: window.innerHeight * window.devicePixelRatio,
-      backgroundColor: '#4eb3e7',
+      backgroundColor: "#eef",
       physics: {
-        default: 'arcade',
+        default: "arcade",
         arcade: {
           gravity: { y: 200 },
         },
       },
-      parent: 'game',
-      fps: { forceSetTimeOut: true, target: 5 },
+
+      parent: "game",
+      fps: { 
+        forceSetTimeOut: true, 
+        target: 30
+      },
 
       scale: {
         mode: Phaser.Scale.FIT,
@@ -37,8 +41,8 @@ export default function Index() {
 
     var game = new Phaser.Game(config);
 
-    game.scene.add('main', Main);
-    game.scene.start('main');
+    game.scene.add("main", Main);
+    game.scene.start("main");
   };
 
   return null;
