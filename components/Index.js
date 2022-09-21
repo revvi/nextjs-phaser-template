@@ -15,8 +15,8 @@ export default function Index() {
 
     var config = {
       type: Phaser.AUTO,
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: 960, // window.innerWidth,
+      height: 540, // window.innerHeight,
       // width: window.innerWidth * window.devicePixelRatio,
       // height: window.innerHeight * window.devicePixelRatio,
       backgroundColor: "#eef",
@@ -34,13 +34,16 @@ export default function Index() {
       },
 
       scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
+
+      render: {
+        pixelArt: false,
+      }
     };
 
     var game = new Phaser.Game(config);
-
     game.scene.add("main", Main);
     game.scene.start("main");
   };
